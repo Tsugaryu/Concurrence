@@ -1,0 +1,1 @@
+Le but de ce TP est de comprendre comment gérer les problèmes de concurrence afin d'insérer les éléments d'une liste dans un ordre correcte.

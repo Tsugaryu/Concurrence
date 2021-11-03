@@ -1,0 +1,40 @@
+Pourquoi n'est il pas possible d’arrêter un thread de façon non coopérative ?
+
+	IL n'est pas possible d'arr^eter un thread de manière non coopérative car on ne peut pas tuer un thread.
+
+Rappeler ce qu'est une opération bloquante.
+	
+	Une opération bloquante est une opération emp^echant le programme de poursuivre son exécution
+	tant que l'opération n'est pas complété (exemple : lecture sur l'entrée standard.)
+
+À quoi sert la méthode d'instance interrupt() de la classe Thread?
+	La méthode interrupt permet de stopper un thread lorsque celui ci se trouve dans un appel bloquant et lance par la suite une InterruptedException.
+
+
+Expliquer comment interrompre un thread en train d'effectuer une opération bloquante et le faire sur l'exemple suivant (en faisant afficher "end" quand le thread est interrompu).
+
+Pendant que celui-ci est en sur une opération bloquante, on lance la méthode interrupt puis l'on traite InteeruptedException
+
+
+public static void main(String[] args) throws InterruptedException {
+    var t = new Thread(() -> {
+    	try{
+    	 while (true) {
+     	  	 Thread.sleep(1_000);
+  	     }
+    	}catch(InterruptedException e){
+    		System.out.println("ZI ENDO");
+    		return;
+    	}
+ 
+    });
+    t.start();
+    t.interrupt();
+    Thread.sleep(1_000);
+    t.interrupt();
+}
+
+Expliquer, sur l'exemple suivant, comment utiliser la méthode Thread.interrupted (noter qu'elle est statique) pour arrêter un thread dans le cas où il n'y a pas d'opération bloquante (dans un premier temps, on suppose que vous ne pouvez pas modifier le code de slow). Faire afficher "end" et la valeur de forNothing quand le thread est interrompu
+
+Expliquer la (trop) subtile différence entre les méthodes Thread.interrupted et thread.isInterrupted de la classe Thread. 
+isInterruted vérifie que son Thread est interrompu interrupted vérifie que le thread sur lequel on se trouve est interrompu

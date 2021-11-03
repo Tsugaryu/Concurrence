@@ -1,0 +1,2 @@
+L'intérêt de ce TP est de comprendre le fonctionnement des Threads en Java. 
+Que doit-on faire pour les utiliser.
